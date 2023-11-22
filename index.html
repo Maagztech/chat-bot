@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>OpenAI Chatbot with Socket.io and MongoDB</title>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      $(function () {
+        const socket = io();
+
+        // Listen for chat messages
+        socket.on('chat message', function (msg) {
+          $('#messages').append($('<li>').text(`${msg.user}: ${msg.message}`));
+        });
+
+        // Send a chat message when the form is submitted
+        $('form').submit(function () {
+          const message = $('#m').val();
+          socket.emit('chat message', message);
+          $('#m').val('');
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>
