@@ -1,9 +1,9 @@
-import express from "express";
-import http from "http";
-import socketIo from "socket.io"
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import OpenAI from 'openai';
+const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const OpenAI = require('openai');
 
 
 dotenv.config();
